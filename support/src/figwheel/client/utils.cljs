@@ -12,7 +12,8 @@
 
 (def ^:dynamic *print-debug* false)
 
-(defn html-env? [] (not (nil? goog/global.document)))
+(defn html-env? [] (or (not (nil? goog/global.document))
+                       (= goog/global.navigator.product "ReactNative")))
 
 (defn node-env? [] (not (nil? goog/nodeGlobalRequire)))
 
